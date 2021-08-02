@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/herow_flutter_plugin.iml" filepath="$PROJECT_DIR$/herow_flutter_plugin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/herow_flutter_plugin_android.iml" filepath="$PROJECT_DIR$/android/herow_flutter_plugin_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/example/android/herow_flutter_plugin_example_android.iml" filepath="$PROJECT_DIR$/example/android/herow_flutter_plugin_example_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/herow_plugin_flutter.iml" filepath="$PROJECT_DIR$/herow_plugin_flutter.iml" />
     </modules>
   </component>
 </project>

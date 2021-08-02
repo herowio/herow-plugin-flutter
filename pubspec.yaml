@@ -1,12 +1,11 @@
-name: herow_flutter_plugin
-description: Herow flutter bridge for herow-sdk
+name: herow_plugin_flutter
+description: Herow plugin flutter for herow-sdk
 version: 0.0.1
-author:
 homepage:
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.20.0 <2.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
@@ -28,10 +27,10 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.herow_flutter_plugin
-        pluginClass: HerowFlutterPlugin
+        package: io.herow.herow_plugin_flutter
+        pluginClass: HerowPluginFlutterPlugin
       ios:
-        pluginClass: HerowFlutterPlugin
+        pluginClass: HerowPluginFlutterPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

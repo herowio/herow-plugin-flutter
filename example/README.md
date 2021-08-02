@@ -1,6 +1,6 @@
-# herow_flutter_plugin_example
+# herow_plugin_flutter_example
 
-Demonstrates how to use the herow_flutter_plugin plugin.
+Demonstrates how to use the herow_plugin_flutter plugin.
 
 ## Getting Started
 

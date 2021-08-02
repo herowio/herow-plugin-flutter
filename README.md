@@ -1,6 +1,6 @@
-# herow_flutter_plugin
+# herow_plugin_flutter
 
-Herow flutter bridge for herow-sdk
+Herow plugin flutter for herow-sdk
 
 ## Getting Started
 
