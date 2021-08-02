@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.5.10'
+    ext.kotlin_version = '1.4.32'
     repositories {
         google()
         jcenter()
@@ -15,15 +15,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/herowio/herow-sdk-android")
-            credentials {
-                // for more detail, please contact contact@herow.io
-                username = System.getenv("REPO_READER_USER")
-                password = System.getenv("REPO_READER_PASSWORD")
-            }
-        }
     }
 }
 

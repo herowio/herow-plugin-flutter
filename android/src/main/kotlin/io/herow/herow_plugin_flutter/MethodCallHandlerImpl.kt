@@ -50,6 +50,12 @@ internal class MethodCallHandlerImpl(var context: Context) : MethodChannel.Metho
                 val onClickAndCollect = herowInitializer.isOnClickAndCollect()
                 result.success(onClickAndCollect)
             }
+            "reset" -> {
+                val sdkId = call.argument<String>("sdkId").toString()
+                val sdkKey = call.argument<String>("sdkKey").toString()
+                val customId = call.argument<String>("customId").toString()
+                herowInitializer.reset(sdkId, sdkKey, customId)
+            }
             else -> result.notImplemented()
         }
     }
