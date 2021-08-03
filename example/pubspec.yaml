@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  permission_handler: ^8.1.4+2
   herow_plugin_flutter:
     # When depending on this package from a real application you should use:
     #   herow_plugin_flutter: ^x.y.z
