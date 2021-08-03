@@ -16,7 +16,7 @@ class HerowPluginFlutterPlugin : FlutterPlugin {
     }
 
     override fun onDetachedFromEngine(p0: FlutterPlugin.FlutterPluginBinding) {
-        teardownChannel();
+        teardownChannel()
     }
 
     fun setupChannel(messenger: BinaryMessenger, context: Context) {

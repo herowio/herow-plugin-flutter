@@ -24,12 +24,11 @@ rootProject.allprojects {
         google()
         jcenter()
         maven {
-            google()
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/herowio/herow-sdk-android")
             credentials {
-                username =  properties.getProperty('github.user')
-                password =  properties.getProperty('github.token')
+                username = properties.getProperty('github.user')
+                password = properties.getProperty('github.token')
             }
         }
     }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:herow_plugin_flutter/herow_plugin_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(MyApp());
@@ -111,12 +112,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   void launchClickAndCollect() async {
-    await HerowPluginFlutter.launchClickAndCollect();
-    HerowPluginFlutter.isOnClickAndCollect().then(
-      (value) => setState(() {
-        _isClickAndCollect = value;
-      }),
-    );
+    if (await Permission.location.request().isGranted) {
+      await HerowPluginFlutter.launchClickAndCollect();
+      HerowPluginFlutter.isOnClickAndCollect().then(
+        (value) => setState(() {
+          _isClickAndCollect = value;
+        }),
+      );
+    }
   }
 
   void stopClickAndCollect() async {
