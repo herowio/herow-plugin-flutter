@@ -58,14 +58,10 @@ Add location permission in your `AndroidManifests.xml` :
 
 This section show you how to use herow-sdk workflow : 
 
-- [Flutter Herow SDK Plugin](#flutter-herow-sdk-plugin)
-- [Features](#features)
-- [Getting started](#getting-started)
-  - [Usage](#usage)
-    - [Initializing the plugin](#initializing-the-plugin)
-    - [GDPR Opt-ins](#gdpr-opt-ins)
-    - [Customer id](#customer-id)
-    - [Click & Collect](#click--collect)
+ - [Initializing the plugin](#initializing-the-plugin)
+ - [GDPR Opt-ins](#gdpr-opt-ins)
+ - [Customer id](#customer-id)
+ - [Click & Collect](#click--collect)
 
 ### Initializing the plugin
 
