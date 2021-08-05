@@ -24,7 +24,7 @@ void main() {
   test('getCustomId', () async {
     expect(await HerowPluginFlutter.customId, '42');
   });
-  test('start click and collect',() async {
-    expect(() => HerowPluginFlutter.launchClickAndCollect(),"");
+  test('start click and collect', () async {
+    expect(() => HerowPluginFlutter.launchClickAndCollect(), "");
   });
 }
