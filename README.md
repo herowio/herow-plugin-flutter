@@ -4,7 +4,7 @@
 
 # Flutter Herow SDK Plugin
 
-This plugin provides a cross-platform (iOS, Android) API to access the open-source Herow SDK
+This plugin provides a cross-platform (iOS, Android) API to access the open-sourced HEROW SDK
 location features and the [Herow platform](https://herow.io).
 
 * [Herow SDK IOS](https://github.com/herowio/herow-sdk-ios)
@@ -31,7 +31,7 @@ The Herow-Plugin-Flutter is based on herow-sdk version : **7.1.0**.
 
 # Getting started
 
-You must **ask location permission** to your user before using HEROW.
+You must **ask location permission** to your user for the HEROW SDK to be functional.
 
 <details>
 <summary>Android</summary>
@@ -59,13 +59,13 @@ Add location permission in your `AndroidManifests.xml` :
 This section show you how to use herow-sdk workflow : 
 
  - [Initializing the plugin](#initializing-the-plugin)
- - [GDPR Opt-ins](#gdpr-opt-ins)
- - [Customer id](#customer-id)
- - [Click & Collect](#click--collect)
+ - [Obtaining GDPR Opt-ins](#gdpr-opt-ins)
+ - [Setting up Custom ids](#customer-id)
+ - [Using Click & Collect](#click--collect)
 
 ### Initializing the plugin
 
-The synchronize method allows the SDK set up with a configuration file downloaded from the Herow platform. The SDK will start the place detection process only when the file download is complete.
+The synchronize method allows the SDK set up with a configuration file downloaded directly from the Herow platform. The SDK will only start the place detection process when the file download is complete.
 
 This configuration file is saved in cache, and the SDK will check for updates at regular intervals.
 
@@ -75,14 +75,14 @@ The `initialize` allows you to configure your access to the HEROW platform. HERO
 - PROD: production environment used for release
 
 
-Warning :warning:
+Warning :
 
-- You will get one Access Key: This Access Key is composed of an SDK ID & an SDK Key and is used to configure your SDK.
+- You will get one Access Key: This Access Key is composed of an **SDK ID** & an **SDK Key** and is used to configure your SDK.
 
 - Please make sure you use the right platform depending on your objective (test or release). Otherwise your SDK won't load/be synced with the right content.
   
 
-The following initialization code is required in order to communicate with herow platform : 
+The following initialization code is required in order to communicate with HEROW platform : 
 
 ```dart
 class _MyAppState extends State<MyApp> {
@@ -94,7 +94,7 @@ class _MyAppState extends State<MyApp> {
   }
 
 //Import 'package:herow_plugin_flutter/herow_plugin_flutter.dart'
-// to be able to access 'HerowPluginFlutter' class
+// to be able to access the 'HerowPluginFlutter' class
   Future<void> initHerow() async {
     await HerowPluginFlutter.initialize("Environment", "sdkId", "apikey");
   }
@@ -108,7 +108,7 @@ Note: The HEROW SDK will only work if the GDPR opt-ins are given by the end-user
 
 ```dart
 //Import 'package:herow_plugin_flutter/herow_plugin_flutter.dart'
-// to be able to access 'HerowPluginFlutter' class
+// to be able to access the 'HerowPluginFlutter' class
   Future<void> optinWorkflow() async {
     await HerowPluginFlutter.acceptOptin();
     await HerowPluginFlutter.getOptin();
@@ -125,7 +125,7 @@ To set a customID, make the following call **as soon as the user logs in**. You 
 
 ```dart
 //Import 'package:herow_plugin_flutter/herow_plugin_flutter.dart'
-// to be able to access 'HerowPluginFlutter' class
+// to be able to access the 'HerowPluginFlutter' class
   Future<void> setCustomId() async {
     await HerowPluginFlutter.setCustomId("YOUR_CUSTOM_ID")
   }
@@ -135,14 +135,14 @@ If the user logs out, you can use the removeCustomID() method.
  
 ```dart
 //Import 'package:herow_plugin_flutter/herow_plugin_flutter.dart'
-// to be able to access 'HerowPluginFlutter' class
+// to be able to access the 'HerowPluginFlutter' class
   Future<void> removeCustomId() async {
     await HerowPluginFlutter.removeCustomId()
   }
 ```
 
 ### Click & Collect
-
+<br>
 To enable the HEROW SDK to temporarly continue tracking end-users location events (geofence detection or standard location events) happening in a Click & Collect context when the app is in the background (but not closed).
 
 This **method is to be called during an active session (app opened)** which will enable the SDK to continue tracking the end-user when the app is put in background.
@@ -157,7 +157,7 @@ By default, the Click & Collect background service will timeout after 2 hours. T
 
 ```dart
 //Import 'package:herow_plugin_flutter/herow_plugin_flutter.dart'
-// to be able to access 'HerowPluginFlutter' class
+// to be able to access the 'HerowPluginFlutter' class
   Future<void> clickAndCollectWorkflow() async {
     await HerowPluginFlutter.launchClickAndCollect();
     await HerowPluginFlutter.isClickAndCollect();
