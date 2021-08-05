@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initHerow() async {
     await HerowPluginFlutter.initialize(
-        "PRE_PROD", "appdemo_herow3", "q1rgy03wG0wjzNIA6qbT");
+        "PRE_PROD", "toto", "toto");
     await HerowPluginFlutter.setCustomId("test@herow.io");
     HerowPluginFlutter.customId.then((value) => setState(() {
           _customId = value;
