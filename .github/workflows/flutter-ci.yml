@@ -25,10 +25,16 @@ jobs:
     # Statically analyze the Dart code for any errors.
        - run: flutter analyze .
 
+       - name: generate local.properties
+         env:
+          REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
+          REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
+         run: echo  github.user=\"$REPO_READER_USER\"\n  github.token=\"$REPO_READER_PASSWORD\"\n > /android/local.properties
+
        - name: compile kotlin
          working-directory: example/
          run: flutter build apk 
          
        - name: compile ios
          working-directory: example/
-         run: flutter build ios 
+         run: echo Not implemented yet command to run => flutter build ios
