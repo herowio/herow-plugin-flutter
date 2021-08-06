@@ -2,8 +2,7 @@
   <a href="https://www.herow.io/" target="blank"><img src="https://uploads-ssl.webflow.com/5ef0d4414918620b0477c25e/5ef21969897eb53ed7491072_logo_tech-herow-300x150.png" width="320" alt="Hero Logo" /></a>
 </p>
 
-<center>
-<table>
+<table style="margin-left: auto; margin-right: auto;">
 <tr>
   <a href="https://github.com/herowio/herow-plugin-flutter/actions/workflows/flutter-ci.yml" target="blank"><img src="https://github.com/herowio/herow-plugin-flutter/actions/workflows/flutter-ci.yml/badge.svg"  alt="build" /></a>
 </tr>
@@ -20,7 +19,6 @@
   <a href="https://github.com/herowio/herow-sdk-ios" target="blank"><img src="https://img.shields.io/badge/herow--sdk--ios-7.1.0-%230ea7d8" alt="License: MIT" /></a>
   </tr>
 </table>
-</center>
 
 # Flutter Herow SDK Plugin
 
