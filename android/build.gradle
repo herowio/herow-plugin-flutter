@@ -26,8 +26,8 @@ rootProject.allprojects {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/herowio/herow-sdk-android")
             credentials {
-                username = properties.getProperty('github.user')
-                password =  properties.getProperty('github.token')
+                username = properties.getProperty('github.user') != null ?  properties.getProperty('github.user') : System.getenv("REPO_READER_USER")
+                password =  properties.getProperty('github.token') ?  properties.getProperty('github.user') : System.getenv("REPO_READER_PASSWORD")
             }
         }
     }

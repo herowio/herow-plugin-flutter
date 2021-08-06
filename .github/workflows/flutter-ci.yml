@@ -25,10 +25,11 @@ jobs:
     # Statically analyze the Dart code for any errors.
        - run: flutter analyze .
 
-       - name: generate local.properties
-         run: printf  "github.user=${{ secrets.REPO_READER_USER }}\ngithub.password=${{ secrets.REPO_READER_PASSWORD }}" > ./example/android/local.properties
 
        - name: compile kotlin
+         env:
+            REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
+            REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
          working-directory: example/
          run: flutter build apk 
          
