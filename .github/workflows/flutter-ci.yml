@@ -29,7 +29,7 @@ jobs:
          env:
           REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
           REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
-         run: echo  github.user=\"$REPO_READER_USER\"\n  github.token=\"$REPO_READER_PASSWORD\"\n > ./android/local.properties
+         run: printf  "github.user=$REPO_READER_USER\ngithub.password=$REPO_READER_PASSWORD" > ./android/local.properties
 
        - name: compile kotlin
          working-directory: example/
