@@ -8,6 +8,9 @@ jobs:
    build:
      
      runs-on: "ubuntu-latest"
+     env:
+        github_user: ${{ secrets.github_user }}
+        github_secret:  ${{ secrets.github_secret }}
 
      steps:
     # Set up Flutter.
@@ -28,7 +31,7 @@ jobs:
        - name: compile kotlin
          working-directory: example/
          run: flutter build apk 
-
+         
        - name: compile ios
          working-directory: example/
          run: flutter build ios 
