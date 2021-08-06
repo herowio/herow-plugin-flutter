@@ -26,10 +26,7 @@ jobs:
        - run: flutter analyze .
 
        - name: generate local.properties
-         env:
-          REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
-          REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
-         run: printf  "github.user=$REPO_READER_USER\ngithub.password=$REPO_READER_PASSWORD" > ./android/local.properties
+         run: printf  "github.user=${{ secrets.REPO_READER_USER }}\ngithub.password=${{ secrets.REPO_READER_PASSWORD }}" > ./example/android/local.properties
 
        - name: compile kotlin
          working-directory: example/
