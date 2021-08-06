@@ -5,7 +5,6 @@ def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
 def properties = new Properties()
 assert localPropertiesFile.exists()
 localPropertiesFile.withReader("UTF-8") { reader -> properties.load(reader) }
-System.out("GithubUser is = "+System.getenv("GITHUB_USER"))
 buildscript {
     ext.kotlin_version = '1.4.32'
     repositories {
