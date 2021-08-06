@@ -8,9 +8,6 @@ jobs:
    build:
      
      runs-on: "ubuntu-latest"
-     env:
-        github_user: ${{ secrets.github_user }}
-        github_secret:  ${{ secrets.github_secret }}
 
      steps:
     # Set up Flutter.
