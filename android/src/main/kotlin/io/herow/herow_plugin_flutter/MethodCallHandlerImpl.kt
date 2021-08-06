@@ -4,6 +4,7 @@ import android.content.Context
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.herow.sdk.connection.HerowPlatform
+import io.herow.sdk.detection.HerowInitializer
 
 internal class MethodCallHandlerImpl(var context: Context) : MethodChannel.MethodCallHandler {
 
