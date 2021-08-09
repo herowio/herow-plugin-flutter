@@ -1,10 +1,6 @@
 group 'io.herow.herow_plugin_flutter'
 version '1.0-SNAPSHOT'
 
-def localPropertiesFile = new File(rootProject.projectDir, "local.properties")
-def properties = new Properties()
-assert localPropertiesFile.exists()
-localPropertiesFile.withReader("UTF-8") { reader -> properties.load(reader) }
 buildscript {
     ext.kotlin_version = '1.5.10'
     repositories {
@@ -26,8 +22,8 @@ rootProject.allprojects {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/herowio/herow-sdk-android")
             credentials {
-                username = properties.getProperty('github.user') != null ?  properties.getProperty('github.user') : System.getenv("REPO_READER_USER")
-                password =  properties.getProperty('github.token') != null ?  properties.getProperty('github.user') : System.getenv("REPO_READER_PASSWORD")
+                username = project.findProperty("github.user") ?: System.getenv("REPO_READER_USER")
+                password = project.findProperty("github.user") ?: System.getenv("REPO_READER_PASSWORD")
             }
         }
     }
