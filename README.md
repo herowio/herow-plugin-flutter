@@ -64,7 +64,7 @@ Add location permission in your `AndroidManifests.xml` :
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 ```
 
-In your `android/app/build.gradle` increase the project's minSdkVersion version to at least 21.
+In your `android/app/build.gradle` increase the project's minSdkVersion version to at least `21`.
 
 ```json
     defaultConfig {
@@ -74,7 +74,7 @@ In your `android/app/build.gradle` increase the project's minSdkVersion version 
     }
 ```
 
-In your `android/build.gradle` increase the kotlin version to `1.5.10`
+In your `android/build.gradle` increase the kotlin's version to at least `1.5.10`.
 
 ```json
   buildscript {
