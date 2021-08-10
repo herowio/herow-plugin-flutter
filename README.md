@@ -46,12 +46,33 @@ The Herow-Plugin-Flutter is based on herow-sdk version : **7.1.0**.
 | get GDPR optin                 |✅        |        |
 | accept GDPR optin              |✅        |        |
 | refuse GDPR optin              |✅        |        |
-| reset                          |✅        |        |
 
 
 # Getting started
 
 You must **ask location permission** to your user for the HEROW SDK to be functional.
+
+In the example plugin project we use [permission_handler](https://pub.dev/packages/permission_handler).
+
+## Pubspec
+
+- Add in your `pubspec.yml` the `herow_plugin_flutter` dependency: 
+
+```yaml
+dependencies:
+    herow_plugin_flutter:
+    git:
+      url: git@github.com:herowio/herow-plugin-flutter.git
+      ref: 0.0.1
+```
+
+- Update flutter with `flutter pub get`
+
+Now in your Dart code, you can use:
+
+```dart
+  import 'package:herow_plugin_flutter/herow_plugin_flutter.dart';
+```
 
 <details>
 <summary>Android</summary>
@@ -82,7 +103,6 @@ In your `android/build.gradle` increase the kotlin's version to at least `1.5.10
     ...
   }
 ```
-
 
 </details>
 
