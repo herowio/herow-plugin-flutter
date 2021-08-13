@@ -1,0 +1,67 @@
+name: Prepare release with a Pull request
+on: 
+  workflow_dispatch:
+
+jobs:
+  prepare-release:
+    runs-on: "ubuntu-latest"
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+      # Get release version
+      - name: Get version to release
+        uses: mikefarah/yq@master
+        id: release-version
+        with:
+          cmd: "yq e '.version' pubspec.yaml"
+      - name: 'Determine default bump'
+        id: 'bump'
+        run: |
+          INIT_VERSION=${{steps.release-version.outputs.result}}
+          if [ "$INIT_VERSION" = "0.0.0" ]; then
+              echo "::set-output name=type::major"
+          else
+              echo "::set-output name=type::patch"
+          fi
+      - name: Bump version and push tag
+        id: next_version
+        uses: mathieudutour/github-tag-action@v5.6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tag_prefix: ""
+          dry_run: true
+          default_bump: '${{ steps.bump.outputs.type }}'
+      - name: bump version pubspec 
+        uses: mikefarah/yq@master
+        id: development-version
+        with:
+          cmd: "yq -i e '.version = \"${{ steps.next_version.outputs.new_version }}\"' pubspec.yaml"
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: $(git rev-list --max-parents=0 HEAD) # Initial commit if no tag found
+      - name: Create commits
+        run: |
+          git config user.name 'Bernard Release Bot'
+          git config user.email 'tmarmillot@users.noreply.github.com'
+          cp CHANGELOG.md  changelog.tmp
+          echo "# ${{steps.next_version.outputs.new_version}}" > CHANGELOG.md
+          git log --pretty="- %s" HEAD...${{ steps.previoustag.outputs.tag }} HEAD >> CHANGELOG.md
+          cat changelog.tmp >> CHANGELOG.md
+          rm -rf changelog.tmp
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        id: cpr
+        with:
+          branch: release/${{steps.next_version.outputs.new_version}}
+          title: '[Release] welcome ${{steps.next_version.outputs.new_version}}'
+          commit-message: "welcome ${{steps.next_version.outputs.new_version}} :bookmark:"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          delete-branch: true
+          labels: release
+          body: "Don't forget to check the changelog :rocket:"
