@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="io.herow.herow_plugin_flutter_example">
 
     <application
+        tools:replace="android:name"
         android:icon="@mipmap/ic_launcher"
         android:label="herow_plugin_flutter_example">
         <activity
@@ -38,6 +40,7 @@
             android:value="2" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />

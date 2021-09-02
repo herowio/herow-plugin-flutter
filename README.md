@@ -62,8 +62,8 @@ In the example plugin project we use [permission_handler](https://pub.dev/packag
 dependencies:
     herow_plugin_flutter:
     git:
-      url: git@github.com:herowio/herow-plugin-flutter.git
-      ref: 0.0.1
+      url: https://github.com/herowio/herow-plugin-flutter.git
+      ref: 7.1.0
 ```
 
 - Update flutter with `flutter pub get`
@@ -80,6 +80,7 @@ Now in your Dart code, you can use:
 Add location permission in your `AndroidManifests.xml` : 
 
 ```xml
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -88,20 +89,44 @@ Add location permission in your `AndroidManifests.xml` :
 In your `android/app/build.gradle` increase the project's minSdkVersion version to at least `21`.
 
 ```json
-    defaultConfig {
-        ...
-        minSdkVersion 21
-        ...
-    }
+android {
+  ...
+  defaultConfig {
+      ...
+      minSdkVersion 21
+      ...
+  }
+  ...
+}
 ```
 
-In your `android/build.gradle` increase the kotlin's version to at least `1.5.10`.
+In your `android/build.gradle` increase the kotlin's version to at least `1.4.32`.
 
 ```json
   buildscript {
-    ext.kotlin_version = '1.5.10'
+    ext.kotlin_version = '1.4.32'
     ...
   }
+```
+
+In your `android/build.gradle` add our Github maven registry.
+
+```json
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/herowio/herow-sdk-android")
+            credentials {
+                // for more detail, please contact contact@herow.io
+                username = "xxx"
+                password = "xxx"
+            }
+        }
+    }
+}
 ```
 
 </details>
@@ -131,8 +156,8 @@ This configuration file is saved in cache, and the SDK will check for updates at
 
 The `initialize` allows you to configure your access to the HEROW platform. HEROW gives you access to the following environments:
 
-- PRE_PROD: pre-production environment used for tests
-- PROD: production environment used for release
+- "PRE_PROD": pre-production environment used for tests
+- "PROD": production environment used for release
 
 
 Warning :
