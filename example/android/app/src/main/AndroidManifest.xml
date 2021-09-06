@@ -3,7 +3,6 @@
     package="io.herow.herow_plugin_flutter_example">
 
     <application
-        tools:replace="android:name"
         android:icon="@mipmap/ic_launcher"
         android:label="herow_plugin_flutter_example">
         <activity
