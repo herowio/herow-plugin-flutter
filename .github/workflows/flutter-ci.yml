@@ -6,7 +6,9 @@ on:
 
 jobs:
    build:
-     
+     env:
+      REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
+      REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
      runs-on: "ubuntu-latest"
 
      steps:
@@ -29,9 +31,6 @@ jobs:
 
 
        - name: compile kotlin
-         env:
-            REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
-            REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
          working-directory: example/
          run: flutter build apk 
          
