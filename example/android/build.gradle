@@ -20,8 +20,8 @@ allprojects {
             url = uri("https://maven.pkg.github.com/herowio/herow-sdk-android")
             credentials {
                 // for more detail, please contact contact@herow.io
-                username = "xxx"
-                password = "xxx"
+                username = System.getenv("REPO_READER_USER")
+                password = System.getenv("REPO_READER_PASSWORD")
             }
         }
     }
