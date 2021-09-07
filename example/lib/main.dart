@@ -37,6 +37,7 @@ class _MyAppState extends State<MyApp> {
     HerowPluginFlutter.askNotificationPermission();
     HerowPluginFlutter.askIDFAPermission();
       }
+    HerowPluginFlutter.acceptOptin();
     HerowPluginFlutter.isOnClickAndCollect().then((value) => setState(() {
           _isClickAndCollect = value;
         }));
