@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:herow_plugin_flutter/herow_plugin_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -26,12 +26,17 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initHerow() async {
     await HerowPluginFlutter.initialize(
-        "PRE_PROD", "toto", "toto");
-    await HerowPluginFlutter.setCustomId("test@herow.io");
+        "PRE_PROD", "appdemo98", "4WQmEg3I6tAsFQG9ZN8T");
+    await HerowPluginFlutter.setCustomId("FlutterIos");
     HerowPluginFlutter.customId.then((value) => setState(() {
           _customId = value;
         }));
-
+  
+    if(Platform.isIOS ) {
+    HerowPluginFlutter.askLocationPermission();
+    HerowPluginFlutter.askNotificationPermission();
+    HerowPluginFlutter.askIDFAPermission();
+      }
     HerowPluginFlutter.isOnClickAndCollect().then((value) => setState(() {
           _isClickAndCollect = value;
         }));
@@ -112,7 +117,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   void launchClickAndCollect() async {
-    if (await Permission.location.request().isGranted) {
+    if(Platform.isAndroid){
+       if (await Permission.location.request().isGranted) {
       await HerowPluginFlutter.launchClickAndCollect();
       HerowPluginFlutter.isOnClickAndCollect().then(
         (value) => setState(() {
@@ -120,6 +126,17 @@ class _MyAppState extends State<MyApp> {
         }),
       );
     }
+    } else {
+     await HerowPluginFlutter.launchClickAndCollect();
+      HerowPluginFlutter.isOnClickAndCollect().then(
+        (value) => setState(() {
+          _isClickAndCollect = value;
+        }),
+      );
+
+    }
+
+ 
   }
 
   void stopClickAndCollect() async {

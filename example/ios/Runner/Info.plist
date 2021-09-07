@@ -22,6 +22,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,5 +45,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>To detect geofence on foreground and background</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>To detect geofence on foreground and background</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To detect geofence on foreground</string>
+	<key>NSMotionUsageDescription</key>
+	<string>To detect user motion</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>App would like to access IDFA for tracking purpose</string>
 </dict>
 </plist>
