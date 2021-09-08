@@ -32,11 +32,11 @@ class _MyAppState extends State<MyApp> {
           _customId = value;
         }));
   
-    if(Platform.isIOS ) {
-    HerowPluginFlutter.askLocationPermission();
-    HerowPluginFlutter.askNotificationPermission();
-    HerowPluginFlutter.askIDFAPermission();
-      }
+
+    await Permission.location.request().isGranted;
+    await Permission.notification.request().isGranted;
+    await Permission.appTrackingTransparency.request().isGranted;
+
     HerowPluginFlutter.acceptOptin();
     HerowPluginFlutter.isOnClickAndCollect().then((value) => setState(() {
           _isClickAndCollect = value;
@@ -118,7 +118,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   void launchClickAndCollect() async {
-    if(Platform.isAndroid){
        if (await Permission.location.request().isGranted) {
       await HerowPluginFlutter.launchClickAndCollect();
       HerowPluginFlutter.isOnClickAndCollect().then(
@@ -127,17 +126,7 @@ class _MyAppState extends State<MyApp> {
         }),
       );
     }
-    } else {
-     await HerowPluginFlutter.launchClickAndCollect();
-      HerowPluginFlutter.isOnClickAndCollect().then(
-        (value) => setState(() {
-          _isClickAndCollect = value;
-        }),
-      );
-
-    }
-
- 
+     
   }
 
   void stopClickAndCollect() async {
