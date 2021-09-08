@@ -1,0 +1,39 @@
+name: flutter CI 
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+   build:
+     env:
+      REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
+      REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
+     runs-on: "ubuntu-latest"
+
+     steps:
+
+    # Set up Flutter.
+       - name: Clone Flutter repository with master channel
+         uses: subosito/flutter-action@v1.5.0
+         with:
+           channel: 'stable'
+
+   # Checkout
+       - name: Checkout
+         uses: actions/checkout@v2
+    
+    # Get flutter dependencies.
+       - run: flutter pub get
+    
+    # Statically analyze the Dart code for any errors.
+       - run: flutter analyze .
+
+
+       - name: compile kotlin
+         working-directory: example/
+         run: flutter build apk 
+         
+       - name: compile ios
+         working-directory: example/
+         run: echo Not implemented yet command to run => flutter build ios

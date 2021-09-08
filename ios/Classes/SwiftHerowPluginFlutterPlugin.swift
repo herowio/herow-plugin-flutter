@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftHerowFlutterPlugin: NSObject, FlutterPlugin {
+public class SwiftHerowPluginFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "herow_flutter_plugin", binaryMessenger: registrar.messenger())
-    let instance = SwiftHerowFlutterPlugin()
+    let channel = FlutterMethodChannel(name: "herow_plugin_flutter", binaryMessenger: registrar.messenger())
+    let instance = SwiftHerowPluginFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
