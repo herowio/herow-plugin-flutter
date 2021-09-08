@@ -36,16 +36,20 @@ The Herow-Plugin-Flutter is based on herow-sdk version : **7.1.0**.
 
 | Feature                        | Android  | iOS    | 
 | -------                        |:-------: | :-----:|
-| configuration app              |✅        |        |
-| get custom id                  |✅        |        |
-| set custom id                  |✅        |        |
-| remove custom id               |✅        |        |
-| Launch click&collect           |✅        |        |
-| stop click&collect             |✅        |        |
-| is on click&collect            |✅        |        |
-| get GDPR optin                 |✅        |        |
-| accept GDPR optin              |✅        |        |
-| refuse GDPR optin              |✅        |        |
+| configuration app              |✅        |    ✅    |
+| get custom id                  |✅        |    ✅    |
+| set custom id                  |✅        |     ✅   |
+| remove custom id               |✅        |     ✅   |
+| Launch click&collect           |✅        |     ✅   |
+| stop click&collect             |✅        |     ✅   |
+| is on click&collect            |✅        |     ✅   |
+| get GDPR optin                 |✅        |    ✅    |
+| accept GDPR optin              |✅        |     ✅   |
+| refuse GDPR optin              |✅        |    ✅    |
+| ask location permissions       |         |    ✅    |
+| ask notifications permissions  |          |    ✅    |
+| ask tracking permissions       |          |    ✅    |
+
 
 
 # Getting started
@@ -53,6 +57,22 @@ The Herow-Plugin-Flutter is based on herow-sdk version : **7.1.0**.
 You must **ask location permission** to your user for the HEROW SDK to be functional.
 
 In the example plugin project we use [permission_handler](https://pub.dev/packages/permission_handler).
+
+### iOS Permissions with HEROW SDK
+
+To enable the HEROW SDK asking permissions you can use method directly 
+If you choose to use this plugin for iOS permission you should use this method: 
+
+```dart
+//Import 'package:herow_plugin_flutter/herow_plugin_flutter.dart'
+// to be able to access the 'HerowPluginFlutter' class
+  Future<void> permissionsWorkflow() async {
+   HerowPluginFlutter.askLocationPermission();
+   HerowPluginFlutter.askNotificationPermission();
+   HerowPluginFlutter.askIDFAPermission();
+  }
+```
+
 
 ## Pubspec
 
@@ -134,7 +154,14 @@ allprojects {
 <details>
 <summary>IOS</summary>
 
-**Not Implemented yet**
+* Modify your podfile to include `herow specs sources`
+
+```
+source 'https://github.com/herowio/Specs'
+```
+
+* Update your `plist` to use `locations and idfa permissions` ( you should read the native iOS documentation [here](https://github.com/herowio/herow-sdk-ios)
+
 
 </details>
 
@@ -249,3 +276,5 @@ By default, the Click & Collect background service will timeout after 2 hours. T
     await HerowPluginFlutter.stopClickAndCollect();
   }
 ```
+
+
