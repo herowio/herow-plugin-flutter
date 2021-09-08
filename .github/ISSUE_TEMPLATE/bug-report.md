@@ -1,21 +1,32 @@
 ---
 
 name: 🐛 Bug Report
-about: Create a report to help us fix bugs and make improvements
+about: Summarize the observed bug
+Company: Replace by your company
+Date: DD/MM/AA
+
 ---
+
+**Platform:** 
+- [ ] :iphone: iOS
+- [ ] :robot: Android
+
+**Version:**
+
+X.X.X
 
 ## 🐛 Bug Report
 
 <!--- Summary description of the bug --->
 
-### Expected behavior
+### Steps to reproduce the bug - _Guide to repeat the process_
 
-### Reproduction steps
+### Observed behavior - _What did happen_
 
-### Configuration
+### Expected behavior - _What you thought was going to happen_
 
-**Version:** 
+### Severity
 
-**Platform:** 
-- [ ] :iphone: iOS
-- [ ] :robot: Android
+- [ ] : Low
+- [ ] : Medium 
+- [ ] : High

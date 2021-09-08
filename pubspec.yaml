@@ -1,6 +1,6 @@
 name: herow_plugin_flutter
 description: Herow plugin flutter for herow-sdk
-version: 0.0.0
+version: 7.1.0
 repository: https://github.com/herowio/herow-plugin-flutter/tree/main
 issue_tracker: https://github.com/herowio/herow-plugin-flutter/issues?q=is%3Aopen+is%3Aissue
 homepage: https://docs.herow.io/sdk/6.3/android/5-minutes-quickstart.html
