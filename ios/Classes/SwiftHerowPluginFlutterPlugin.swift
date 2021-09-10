@@ -61,15 +61,15 @@ public class SwiftHerowPluginFlutterPlugin: NSObject, FlutterPlugin {
                 }
             }
 
-            guard let herowPlatForm = herowPlatForm, let apiKey = apiKey, let secret = secret else {
+            guard let _herowPlatForm = herowPlatForm, let _apiKey = apiKey, let _secret = secret else {
                 return result(FlutterError(code: "ARGUMENT_ERRROR", message: "Arguements is empty", details: nil))
             }
 
             var platform: HerowPlatform = .prod
-            if herowPlatForm == "preprod" || herowPlatForm == "PRE_PROD" {
+            if _herowPlatForm == "preprod" || _herowPlatForm == "PRE_PROD" {
                 platform = .preprod
             }
-            self.herowInitializer.configPlatform(platform).configApp(identifier: apiKey, sdkKey: secret).synchronize()
+            self.herowInitializer.configPlatform(platform).configApp(identifier: _apiKey, sdkKey: _secret).synchronize()
             break
         case "launchClickAndCollect":
             self.herowInitializer.launchClickAndCollect()
