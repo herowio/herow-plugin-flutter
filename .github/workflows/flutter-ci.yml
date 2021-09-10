@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-   build:
+  build:
      env:
       REPO_READER_USER : ${{ secrets.REPO_READER_USER }}
       REPO_READER_PASSWORD : ${{ secrets.REPO_READER_PASSWORD }}
@@ -15,9 +15,9 @@ jobs:
 
     # Set up Flutter.
        - name: Clone Flutter repository with master channel
-         uses: subosito/flutter-action@v1.5.0
+         uses: subosito/flutter-action@v1.5.3
          with:
-           channel: 'stable'
+          flutter-version: '2.5.0'
 
    # Checkout
        - name: Checkout
@@ -34,6 +34,29 @@ jobs:
          working-directory: example/
          run: flutter build apk 
          
-       - name: compile ios
-         working-directory: example/
-         run: echo Not implemented yet command to run => flutter build ios
+  build_ios:
+    name: Build iOS App
+    
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      # Make sure the stable version of Flutter is available
+      - uses: subosito/flutter-action@v1.5.3
+        with:
+          flutter-version: '2.5.0'
+
+      # Download all Flutter packages
+      - name: Download dependencies
+        run: flutter pub get
+    
+      - name: flutter clean
+        run: flutter clean
+
+      # Build iOS version of the example App
+      - name: Run iOS build
+        run: flutter build ios --release --no-codesign
+        working-directory: example/
