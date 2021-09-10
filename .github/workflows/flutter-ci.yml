@@ -49,12 +49,12 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: flutter clean
-        run: flutter clean
-
       # Download all Flutter packages
       - name: Download dependencies
         run: flutter pub get
+    
+      - name: flutter clean
+        run: flutter clean
 
       # Build iOS version of the example App
       - name: Run iOS build
