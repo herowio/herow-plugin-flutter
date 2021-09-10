@@ -55,7 +55,43 @@ To enable import and autocompletion features in your kotlin file for develepment
 <details>
 <summary>IOS</summary>
 
-  **Not implemented yet**
+
+
+
+## io.herow.sdk:detection Dependency 
+In the `ios/herow_plugin_flutter.podspec` you will find the native sdk dependencies:
+ 
+
+```
+Pod::Spec.new do |s|
+  s.name             = 'herow_plugin_flutter'
+  s.version          = '7.1.0'
+  s.summary          = 'Herow plugin flutter for herow-sdk'
+  s.description      = <<-DESC
+Herow plugin flutter for herow-sdk
+                       DESC
+  s.homepage         = 'http://herow.io'
+  s.license          = 'MIT'
+  s.author           = { 'Herow' => 'contact@herow.io' }
+  s.source       = {
+    :http => "https://github.com/herowio/herow-sdk-ios/releases/download/v7.1.0/herow_sdk_ios.framework.zip",
+    :type => "zip"
+  }
+  s.source_files = 'Classes/**/*'
+  s.dependency 'Flutter'
+  s.dependency "Herow"
+  s.platforms    = { :ios => "11.0" }
+
+  # Flutter.framework does not contain a i386 slice.
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
+  s.swift_version = '5.0'
+end
+```
+
+
+Now you are ready to develop the iOS section :superhero: :tada:
+
+
 
 </details>
 <br>
@@ -123,8 +159,38 @@ In the [MethodCallHandlerImpl.tk](android/src/main/kotlin/io/herow/herow_plugin_
 
 ### IOS 
 
-**Not Implemented yet**
+In the [SwiftHerowPluginFlutterPlugin.swift](ios/Classes/SwiftHerowPluginFlutterPlugin.swift) add a case that we will be called within the string that you `_channel.invokeMethod` : 
 
+```swift
+    case "MyNewMethod":
+            self.herowInitializer.MyNewMethod()
+            break
+
+```
+
+* If your method have arguments, add them within `proceedArguments` : 
+
+```swift
+    case "MyNewMethod":
+            if (proceedArguments(call: call, result: result, keys: [ "argumentName1"])) {
+                if let arguments = call.arguments, let arg = arguments as? [String: Any] {
+                    if let value: String = arg["argumentName1"] as? String {
+                        self.herowInitializer.MyNewMethod(arg:Value)
+                    }
+                }
+            }
+            break
+
+```
+
+* If your method returns something then invoke `result.success` or `result.fail` with a logic output : 
+
+```kotlin
+    case "MyNewMethod":
+            result(self.herowInitializer.MyNewMethod())
+            break
+
+```
 ## Last word
 
 Feel free to complete the [Example](example/lib/main.dart) `main.dart` and do not forget to test it :sunny:
