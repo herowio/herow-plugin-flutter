@@ -57,6 +57,7 @@ To enable import and autocompletion features in your kotlin file for develepment
 
 
 
+
 ## io.herow.sdk:detection Dependency 
 In the `ios/herow_plugin_flutter.podspec` you will find the native sdk dependencies:
  
@@ -89,6 +90,7 @@ end
 
 
 Now you are ready to develop the iOS section :superhero: :tada:
+
 
 
 </details>
@@ -156,6 +158,7 @@ In the [MethodCallHandlerImpl.tk](android/src/main/kotlin/io/herow/herow_plugin_
 ```
 
 ### IOS 
+
 In the [SwiftHerowPluginFlutterPlugin.swift](ios/Classes/SwiftHerowPluginFlutterPlugin.swift) add a case that we will be called within the string that you `_channel.invokeMethod` : 
 
 ```swift

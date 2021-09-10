@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:herow_plugin_flutter/herow_plugin_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -26,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initHerow() async {
     await HerowPluginFlutter.initialize(
-        "PRE_PROD", "appdemo98", "4WQmEg3I6tAsFQG9ZN8T");
+        "PRE_PROD", "SDK_ID", "SDK_KEY");
     await HerowPluginFlutter.setCustomId("FlutterIos");
     HerowPluginFlutter.customId.then((value) => setState(() {
           _customId = value;
@@ -126,7 +125,6 @@ class _MyAppState extends State<MyApp> {
         }),
       );
     }
-     
   }
 
   void stopClickAndCollect() async {
