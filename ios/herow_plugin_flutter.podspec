@@ -20,7 +20,6 @@ Herow plugin flutter for herow-sdk
   s.dependency 'Flutter'
   s.dependency "Herow"
   s.platforms    = { :ios => "11.0" }
-
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
