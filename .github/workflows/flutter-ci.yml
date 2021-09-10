@@ -49,6 +49,9 @@ jobs:
         with:
           channel: 'stable'
 
+      - name: flutter clean
+        run: flutter clean
+
       # Download all Flutter packages
       - name: Download dependencies
         run: flutter pub get
