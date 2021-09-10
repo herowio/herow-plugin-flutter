@@ -35,6 +35,18 @@ class HerowPluginFlutter {
     _channel.invokeMethod("refuseOptin");
   }
 
+  static Future<void> askLocationPermission() async {
+    _channel.invokeMethod("askLocation");
+  }
+
+  static Future<void> askNotificationPermission() async {
+    _channel.invokeMethod("askNotification");
+  }
+
+  static Future<void> askIDFAPermission() async {
+    _channel.invokeMethod("askIDFA");
+  }
+
   static Future<void> launchClickAndCollect() async {
     _channel.invokeMethod("launchClickAndCollect");
   }
