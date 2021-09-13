@@ -1,0 +1,48 @@
+name: Prepare release with a Pull request
+on: 
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: "release version"
+        required: true
+
+jobs:
+  prepare-release:
+    runs-on: "ubuntu-latest"
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+      - name: bump version pubspec 
+        uses: mikefarah/yq@master
+        id: development-version
+        with:
+          cmd: "yq -i e '.version = \"${{ github.event.inputs.release-version }}\"' pubspec.yaml"
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: $(git rev-list --max-parents=0 HEAD) # Initial commit if no tag found
+      - name: Create commits
+        run: |
+          git config user.name 'Bernard Release Bot'
+          git config user.email '${{ github.actor }} <${{ github.actor }}@users.noreply.github.com'
+          cp CHANGELOG.md  changelog.tmp
+          echo "# ${{ github.event.inputs.release-version }}" > CHANGELOG.md
+          git log --pretty="- %s" HEAD...${{ steps.previoustag.outputs.tag }} HEAD >> CHANGELOG.md
+          cat changelog.tmp >> CHANGELOG.md
+          rm -rf changelog.tmp
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        id: cpr
+        with:
+          branch: release/${{ github.event.inputs.release-version }}
+          title: '[Release] welcome ${{ github.event.inputs.release-version  }}'
+          commit-message: "welcome ${{ github.event.inputs.release-version  }} :bookmark:"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          delete-branch: true
+          labels: release
+          body: "Don't forget to check the changelog :rocket:"
