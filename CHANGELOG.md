@@ -3,6 +3,3 @@
 - feat: init ios herow-sdk (#3)
 - feat: init android herow-sdk (#1)
 - initial flutter plugin project
-## 7.1.0
-
-* First release
