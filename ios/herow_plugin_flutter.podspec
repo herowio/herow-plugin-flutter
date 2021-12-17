@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'herow_plugin_flutter'
-  s.version          = '7.1.0'
+  s.version          = '7.2.0'
   s.summary          = 'Herow plugin flutter for herow-sdk'
   s.description      = <<-DESC
 Herow plugin flutter for herow-sdk
@@ -13,7 +13,7 @@ Herow plugin flutter for herow-sdk
   s.license          = 'MIT'
   s.author           = { 'Herow' => 'contact@herow.io' }
   s.source       = {
-    :http => "https://github.com/herowio/herow-sdk-ios/releases/download/v7.1.0/herow_sdk_ios.framework.zip",
+    :http => "https://github.com/herowio/herow-sdk-ios/releases/download/v7.2.0/herow_sdk_ios.framework.zip",
     :type => "zip"
   }
   s.source_files = 'Classes/**/*'

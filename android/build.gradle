@@ -1,5 +1,5 @@
 group 'io.herow.herow_plugin_flutter'
-version '7.1.0'
+version '7.2.0'
 
 buildscript {
     ext.kotlin_version = '1.5.10'
@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -37,5 +37,5 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'io.herow.sdk:detection:7.1.0'
+    implementation 'io.herow.sdk:detection:7.2.0'
 }

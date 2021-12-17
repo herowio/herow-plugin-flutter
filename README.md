@@ -83,7 +83,7 @@ dependencies:
     herow_plugin_flutter:
     git:
       url: https://github.com/herowio/herow-plugin-flutter.git
-      ref: 7.1.0
+      ref: 7.2.0
 ```
 
 - Update flutter with `flutter pub get`
